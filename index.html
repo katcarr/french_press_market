@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="frenchPressMarket">
+  <head>
+    <title>Press Market</title>
+    <script src="lib/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.12.1.js"></script>
+    <script src="controllers/FrenchPressController.js"></script>
+    <script src="services/FrenchPressFactory.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to The French Press Bulk Market</h1>
+      <div ng-controller="FrenchPressesCtrl">
+
+      <form ng-submit="FrenchPressFactory.addPress()" role="form">
+
+        <div class="btn-group" ng-controller="ButtonsCtrl">
+          <label class="btn btn-primary" ng-model="FrenchPressFactory.pressSize" btn-radio="'Pint'">Pint</label>
+          <label class="btn btn-primary" ng-model="FrenchPressFactory.pressSize" btn-radio="'Quart'">Quart</label>
+          <label class="btn btn-primary" ng-model="FrenchPressFactory.pressSize" btn-radio="'Pitcher'">Pitcher</label>
+        </div>
+        <br><br>
+        <div class="btn-group" ng-controller="ButtonsCtrl">
+          <label class="btn btn-primary" ng-model="FrenchPressFactory.pressMaterial" btn-radio="'Glass'">Glass</label>
+          <label class="btn btn-primary" ng-model="FrenchPressFactory.pressMaterial" btn-radio="'Metal'">Metal</label>
+        </div>
+        <br><br>
+        <div class="form-group">
+          <label for="Quantity">Quantity: </label>
+          <input type="number" ng-model="FrenchPressFactory.pressQuantity" min="1" />
+        </div>
+
+        <button type="submit" class="btn btn-warning">Order</button>
+
+        {{factory.total}}
+
+      </form>
+      </div>
+    </div>
+  </body>
+</html>
